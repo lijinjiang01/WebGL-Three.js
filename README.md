@@ -42,10 +42,10 @@ far- 远端距离 <br>
 renderer=new THREE.WebGLRenderer({      <br>
 antialias:true,//antialias:true/false是否开启反锯齿<br>
 precision:"highp",//precision:highp/mediump/lowp着色精度选择<br>
-alpha:true,//alpha:true/false是否可以设置背景色透明 <br>     
-premultipliedAlpha:false,//?      <br>
-stencil:false,//?    <br>  
-preserveDrawingBuffer:true,//preserveDrawingBuffer:true/false是否保存绘图缓冲     <br>
+alpha:true,//alpha:true/false是否可以设置背景色透明 <br>
+premultipliedAlpha:false,//?<br>
+stencil:false,//?<br>
+preserveDrawingBuffer:true,//preserveDrawingBuffer:true/false是否保存绘图缓冲<br>
 maxLights:1//maxLights:最大灯光数<br>
 }); <br>
 WebGLRenderer()中有一些参数我们可以设置，以下这些参数来自于官方文档：<br>
