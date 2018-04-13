@@ -4,13 +4,13 @@
 类库：three.js（版本号：91）
 ## 第一份Three.js代码（源代码在chapter1中）
 ### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/chapter1/web1.gif)
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web1.gif)
 ## 第二份Three.js代码（源代码在chapter2中）
 ### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/chapter2/web2.gif)
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web2.gif)
 ## 第三份Three.js代码（源代码在chapter3中）
 ### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/chapter3/web3.gif)
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web3.gif)
 ## 基础知识
 ### Three.js 的三大组件
 #### 一.场景：
@@ -18,6 +18,7 @@ scene = new THREE.Scene();  /* 新建场景 */<br>
 在Three.js中添加的物体都是添加到场景中的。在程序最开始的时候进行实例化，然后将物体添加到场景中即可。
 #### 二.照相机：
 使用的坐标系是右手坐标系<br>
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/右手坐标系.jpg)
 Three.js提供的照相机分为两种：<br>
 ##### 正交投影照相机：OrthographicCamera( left, right, top, bottom, near, far )
 left — 该属性是可视范围的左平面。你可以将它当做是可渲染部分的左侧边界。<br>
@@ -28,12 +29,14 @@ near （近面）— 基于相机所在的位置，从这一点开始渲染场�
 far （远面）— 基于相机所在的位置，一直渲染到场景中的这一点 <br>
 这六个投影面围成的区域就是相机投影的可见区域。 <br>
 三维空间内，只有在这个区域内的物体才会被相机看到。<br>
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/正交投影.jpg)
 ##### 透视投影照相机：PerspectiveCamera(fov, aspect, near, far)
 fov - 可视角度 <br><br>
 aspect - 为width/height,通常设置为canvas元素的高宽比。<br>
 near- 近端距离 <br>
 far- 远端距离 <br>
 只有离相机的距离大于near值，小于far值，且在相机的可视角度之内，才能被相机投影到。<br>
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/透视投影.jpg)
 #### 三.渲染器
 /*创建渲染器*/<br>
 renderer=new THREE.WebGLRenderer({      <br>
