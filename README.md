@@ -18,7 +18,7 @@ scene = new THREE.Scene();  /* 新建场景 */<br>
 在Three.js中添加的物体都是添加到场景中的。在程序最开始的时候进行实例化，然后将物体添加到场景中即可。
 #### 二.照相机：
 使用的坐标系是右手坐标系<br>
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/右手坐标系.jpg)
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/右手坐标系.png)
 Three.js提供的照相机分为两种：<br>
 ##### 正交投影照相机：OrthographicCamera( left, right, top, bottom, near, far )
 left — 该属性是可视范围的左平面。你可以将它当做是可渲染部分的左侧边界。<br>
