@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three.js</title>
+    <script src="js\three.js"></script>
+</head>
+<body>
+<script >
+	var scene, camera, renderer;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+    camera.position.set(4.5,6,7.5);
+    camera.lookAt(new THREE.Vector3(0,0,0));
+    camera.position.r = 0;
+    scene.add(camera);
+
+    var regionR = 3;
+    var cylinderMesh = new THREE.CylinderGeometry( regionR, regionR, 0.05, 1024 );
+    var material = new THREE.MeshNormalMaterial();
+    var cylinder = new THREE.Mesh( cylinderMesh, material );
+    cylinder.position.set(0,0,0);
+    scene.add( cylinder );
+
+
+    function pointsGenerator(amount) {
+        var polarPointsArr = [];
+        for (var i = 0; i < amount; i ++) {
+            var r = Math.random() * regionR;
+            var θ = (2 * Math.PI / 360) * (Math.random() * 360);
+            polarPointsArr.push({r: r, θ: θ});
+        }
+
+        var cartesianPointsArr = [];
+        for (var j = 0; j < polarPointsArr.length; j ++) {
+            var r = polarPointsArr[j].r;
+            var θ = polarPointsArr[j].θ;
+            var x = r * Math.cos(θ);
+            var y = r * Math.sin(θ);
+            cartesianPointsArr.push({x: x, y: y});
+        }
+
+        return {polarPointsArr: polarPointsArr, cartesianPointsArr: cartesianPointsArr};
+    }
+
+
+
+    function addRadomCubes(amount) {
+        var cubesArr = [];
+
+        var randomPosition = pointsGenerator(amount);
+        var polarPointsArr = randomPosition.polarPointsArr;
+        var cartesianPointsArr = randomPosition.cartesianPointsArr;
+        for (var i = 0; i < cartesianPointsArr.length; i ++) {
+            var position = cartesianPointsArr[i];
+            var r = polarPointsArr[i].r;
+
+            var cubeMesh = new THREE.BoxGeometry(0.2, regionR - r, 0.2);
+            var cube = new THREE.Mesh(cubeMesh, material);
+            cube.position.set(position.x, (regionR - r) / 2 + 0.025, position.y);
+            scene.add(cube);
+            cubesArr.push(cube);
+        }
+
+        return {cubesArr: cubesArr, randomPosition: randomPosition};
+    }
+
+    var cubesArrInfo = addRadomCubes(100);
+    var cubesArr = cubesArrInfo.cubesArr;
+    var randomPosition = cubesArrInfo.randomPosition;
+
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    
+    function render() {
+        requestAnimationFrame( render );
+
+        for (var i = 0; i < cubesArr.length; i++) {
+            var delta = 0.01;
+            var deltaLength = (regionR - randomPosition.polarPointsArr[i].r) * delta;
+
+            var random = Math.random();
+            if (random >= 0.5) {
+                cubesArr[i].scale.y += delta;
+                cubesArr[i].translateY(deltaLength / 2);
+            } else {
+                cubesArr[i].scale.y -= delta;
+                cubesArr[i].translateY(deltaLength / -2);
+            }
+
+        };
+
+        var x = 2.5 * regionR * Math.cos(camera.position.r);
+        var z = 2.5 * regionR * Math.sin(camera.position.r);
+        camera.position.x = x;
+        camera.position.z = z;
+        camera.lookAt(new THREE.Vector3(0,0,0));
+        camera.position.r += 0.01;
+        if (camera.position.r >= 2 * Math.PI) {
+            camera.position.r = 0;
+        }
+
+        renderer.render(scene, camera);
+    }
+    render();
+    </script>
+    </body>
+</html>
