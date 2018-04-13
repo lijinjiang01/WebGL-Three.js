@@ -31,7 +31,7 @@ far （远面）— 基于相机所在的位置，一直渲染到场景中的这
 三维空间内，只有在这个区域内的物体才会被相机看到。<br>
 ![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/正交投影.jpg)
 ##### 透视投影照相机：PerspectiveCamera(fov, aspect, near, far)
-fov - 可视角度 <br><br>
+fov - 可视角度 <br>
 aspect - 为width/height,通常设置为canvas元素的高宽比。<br>
 near- 近端距离 <br>
 far- 远端距离 <br>
