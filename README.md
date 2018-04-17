@@ -2,15 +2,6 @@
 ## 使用工具
 编辑器：Sublime Text 3<br>
 类库：three.js（版本号：91）
-## 第一份Three.js代码（源代码在chapter1中）
-### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web1.gif)
-## 第二份Three.js代码（源代码在chapter2中）
-### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web2.gif)
-## 第三份Three.js代码（源代码在chapter3中）
-### 效果图如下：
-![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web3.gif)
 ## 基础知识
 ### Three.js 的三大组件
 #### 一.场景：
@@ -70,3 +61,14 @@ WebGLRenderer()中有一些参数我们可以设置，以下这些参数来自�
   (7)maxLights:<br>
 　　  值：数值int<br>
 　　  含义：最大灯光数，我们的场景中最多能够添加多少个灯光。<br>
+### 效果图如下：
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web1.gif)
+## 第二份Three.js代码（源代码在chapter2中）
+### 效果图如下：
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web2.gif)
+## 第三份Three.js代码（源代码在chapter3中）
+### 效果图如下：
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web3.gif)
+## 第四份Three.js代码（源代码在chapter4中，建议新建一个Web项目打开html，不然png加载不了）
+### 效果图如下：
+![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web4.gif)
