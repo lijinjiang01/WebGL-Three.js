@@ -9,7 +9,7 @@
 var scene, camera, renderer;
 scene = new THREE.Scene();
 camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
-camera.position.set(5,5,5);
+camera.position.set(3,3,3);
 camera.lookAt(new THREE.Vector3(0,0,0));
 scene.add(camera);
 
@@ -29,7 +29,7 @@ function pointsGenerator(num) {
 var texture = new THREE.TextureLoader().load("img/star.png");
 var points = pointsGenerator(1000);
 var material = new THREE.PointsMaterial({
-  size: 0.02,
+  size: 0.1,
   map:texture,
   /*blending: THREE.AdditiveBlending,
   depthTest: false,
