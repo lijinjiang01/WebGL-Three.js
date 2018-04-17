@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three.js</title>
+    <script src="js\three.js"></script>
+</head>
+<body>  
+<script > 
+var scene, camera, renderer;
+scene = new THREE.Scene();
+camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+camera.position.set(5,5,5);
+camera.lookAt(new THREE.Vector3(0,0,0));
+scene.add(camera);
+
+
+function pointsGenerator(num) {
+  var geometry = new THREE.Geometry();
+  for (var i = 0;i < num; i++) {
+    var pX = (Math.random() * 10) - 5;
+    var pY = (Math.random() * 10) - 5;
+    var pZ = (Math.random() * 10) - 5;
+    var vector = new THREE.Vector3(pX, pY, pZ);
+    geometry.vertices.push(vector);
+  }
+  return geometry;
+}
+
+var texture = new THREE.TextureLoader().load("img/star.png");
+var points = pointsGenerator(1000);
+var material = new THREE.PointsMaterial({
+  size: 0.02,
+  map:texture,
+  /*blending: THREE.AdditiveBlending,
+  depthTest: false,
+  transparent: true*/
+});
+var fireflies = new THREE.Points(points, material);
+scene.add(fireflies);
+
+
+
+renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+
+
+function render() {
+  requestAnimationFrame(render);
+  renderer.render(scene, camera);
+
+  fireflies.rotation.x += 0.001;
+  fireflies.rotation.y += 0.001;
+  fireflies.rotation.z += 0.001;
+}
+render();
+
+</script>
+</body>
+</html>
