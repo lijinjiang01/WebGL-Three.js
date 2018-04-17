@@ -69,6 +69,6 @@ WebGLRenderer()中有一些参数我们可以设置，以下这些参数来自�
 ## 第三份Three.js代码（源代码在chapter3中）
 ### 效果图如下：
 ![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web3.gif)
-## 第四份Three.js代码（源代码在chapter4中，建议新建一个Web项目打开html，不然png加载不了）
+## 第四份Three.js代码（源代码在chapter4中，建议新建一个Web项目打开html，不然控制台会报错：Access to Image at 'file:///C:/Users/%E6%9D%8E%E6%99%8B%E6%B1%9F/Desktop/Sublime/img/star.png' from origin 'null' has been blocked by CORS policy: Invalid response. Origin 'null' is therefore not allowed access.）
 ### 效果图如下：
 ![](https://github.com/1123GY/WebGL-Three.js/blob/master/img/web4.gif)
