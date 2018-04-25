@@ -1,0 +1,74 @@
+<!-- 闇�鍦ㄦ湇鍔″櫒涓婅繍琛�-->
+<!-- 鍒涘缓涓�釜涓嬮洦鐨勬ā鍨�闆ㄦ淮妯″瀷涓哄浘鐗�-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three.js</title>
+    <script src="js\three.js"></script>
+</head>
+<body>  
+<script > 
+var scene, camera, renderer;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+    camera.position.set(0,0,3);
+    camera.lookAt(new THREE.Vector3(0,0,0));
+    scene.add(camera);
+
+    var texture = new THREE.TextureLoader().load("img/rain.png")
+	var material = new THREE.PointsMaterial({color: 'lightblue', size: 0.1,map:texture});
+
+    function pointsGenerator(num) {
+        var geometry = new THREE.Geometry();
+        for (var i = 0;i < num; i++) {
+            var pX = Math.random() * 5 - 2.5;
+            var pY = Math.random() * 3 - 1.5;
+            var pZ = Math.random() * 4 - 2;
+            var particle = new THREE.Vector3(pX, pY, pZ);
+            geometry.vertices.push(particle);
+        }
+        return new THREE.Points(geometry, material);
+    }
+
+    var rain = pointsGenerator(100); //鍒涘缓绗竴鎵归洦婊�
+    rain.position.set(0,0,0);
+    scene.add(rain);
+
+    var additionRain = pointsGenerator(100); //鍒涘缓绗簩鎵归洦婊�
+    additionRain.position.set(0,3,0);
+    scene.add(additionRain);
+
+    
+
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    
+    
+    function animate() {
+        
+        rain.position.y -= 0.01;
+        if (rain.position.y <= - 3) {
+            scene.remove(rain);
+            rain = pointsGenerator(100);
+            rain.position.set(0,3,0);
+            scene.add(rain);
+        }
+
+        additionRain.position.y -= 0.01;
+        if (additionRain.position.y <= - 3) {
+            scene.remove(additionRain);
+            additionRain = pointsGenerator(100);
+            additionRain.position.set(0,3,0);
+            scene.add(additionRain);
+        }
+        
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    animate();
+</script>   
+</body>
+</html>
